@@ -1,0 +1,10 @@
+{
+  "name": "project-handoff-skill",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cross-agent project handoff protocol skill.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  }
+}

@@ -1,0 +1,18 @@
+# Local/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Agent scratch/state outside published artifacts
+.three-body/state.json
+.three-body/tmp/
+.opencode/session/
+
+# Build/package outputs
+dist/
+*.zip
+*.tgz
+
+# Logs
+*.log
+npm-debug.log*
