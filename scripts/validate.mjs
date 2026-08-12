@@ -56,8 +56,7 @@ const requiredFiles = [
   "adapters/claude-code/CLAUDE.md",
   "adapters/qoder/README.md",
   "adapters/trae/README.md",
-  "adapters/workbuddy-codebuddy/README.md",
-  "docs/RED_SKILLHUB_UPLOAD_NOTES.md"
+  "adapters/workbuddy-codebuddy/README.md"
 ];
 
 for (const file of requiredFiles) requireFile(file);
@@ -108,7 +107,7 @@ for (const [templatePath, referencePath] of mirroredTemplates) {
 }
 
 const readme = readRequired("README.md");
-for (const phrase of ["npm run validate", "GitHub", "SkillHub", "Release Checklist"]) {
+for (const phrase of ["npm run validate", "GitHub", "Release Checklist"]) {
   if (!readme.includes(phrase)) warnings.push(`README.md does not mention: ${phrase}`);
 }
 

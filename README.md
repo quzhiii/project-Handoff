@@ -69,7 +69,7 @@ project-handoff-v0.1-draft/
   templates/                    # Project protocol templates
   adapters/                     # Tool-specific adapter notes
   install/                      # Windows install/bootstrap script
-  docs/                         # Publishing and upload notes
+  docs/                         # Maintenance notes
   scripts/                      # Local validation
 ```
 
@@ -103,7 +103,7 @@ Windows PowerShell:
 
 ### 本地校验
 
-发布、同步 GitHub 或上传 SkillHub 前运行：
+本地试跑、同步 GitHub 或发布前运行：
 
 ```powershell
 npm run validate
@@ -133,18 +133,7 @@ npm run validate
 3. 检查模板和 references 是否同步。
 4. 检查仓库内是否包含凭据、会话文件、日志、压缩包或机器本地路径。
 5. 更新 `CHANGELOG.md`。
-6. 提交到 Git，再推送到 GitHub 或上传到 SkillHub。
-
-### 小红书 SkillHub
-
-上传注意事项见：`docs/RED_SKILLHUB_UPLOAD_NOTES.md`。
-
-当前建议：
-
-- SkillHub 如果只接受 Skill 包，上传 `skill/project-handoff/`。
-- SkillHub 如果支持项目附件或补充文件，上传完整项目包，并确认入口为 `skill/project-handoff/SKILL.md`。
-- 上传前运行 `npm run validate`。
-- 最终提交需要人工明确确认。
+6. 提交到 Git，再推送到 GitHub 或同步到目标项目。
 
 ---
 
@@ -209,7 +198,7 @@ project-handoff-v0.1-draft/
   templates/                    # Project protocol templates
   adapters/                     # Tool-specific adapter notes
   install/                      # Windows install/bootstrap script
-  docs/                         # Publishing and upload notes
+  docs/                         # Maintenance notes
   scripts/                      # Local validation
 ```
 
@@ -243,7 +232,7 @@ Existing files are skipped by default. Use this when replacement is intentional:
 
 ### Validate Locally
 
-Run before local rollout, GitHub sync, or SkillHub packaging:
+Run before local rollout, GitHub sync, or release:
 
 ```powershell
 npm run validate
@@ -273,18 +262,7 @@ The validator checks:
 3. Confirm templates and references are synchronized.
 4. Check for credentials, session files, logs, archives, and machine-local paths.
 5. Update `CHANGELOG.md`.
-6. Commit to Git before pushing to GitHub or uploading to a SkillHub.
-
-### Xiaohongshu SkillHub
-
-Upload notes are maintained in `docs/RED_SKILLHUB_UPLOAD_NOTES.md`.
-
-Current recommendation:
-
-- If SkillHub expects a Skill package, upload `skill/project-handoff/`.
-- If SkillHub accepts supporting materials, upload the full project package and keep `skill/project-handoff/SKILL.md` as the entrypoint.
-- Run `npm run validate` before upload.
-- Wait for explicit human confirmation before final submission.
+6. Commit to Git before pushing to GitHub or syncing into target projects.
 
 ## License
 
