@@ -33,8 +33,10 @@ const requiredFiles = [
   "CHANGELOG.md",
   "LICENSE",
   "package.json",
+  "scripts/check-staleness.mjs",
   "skill/project-handoff/SKILL.md",
   "templates/AGENTS.md",
+  "templates/BOOTSTRAP.md",
   "templates/BRIEF.md",
   "templates/STATE.md",
   "templates/DECISIONS.md",
@@ -43,6 +45,7 @@ const requiredFiles = [
   "templates/EXECUTION_RECEIPT.md",
   "templates/REVIEW_RESULT.md",
   "templates/SNAPSHOT_MANIFEST.md",
+  "skill/project-handoff/references/BOOTSTRAP_PROMPT.md",
   "skill/project-handoff/references/TASK_TEMPLATE.md",
   "skill/project-handoff/references/EXECUTION_RECEIPT_TEMPLATE.md",
   "skill/project-handoff/references/REVIEW_RESULT_TEMPLATE.md",
@@ -56,7 +59,10 @@ const requiredFiles = [
   "adapters/claude-code/CLAUDE.md",
   "adapters/qoder/README.md",
   "adapters/trae/README.md",
-  "adapters/workbuddy-codebuddy/README.md"
+  "adapters/workbuddy-codebuddy/README.md",
+  "docs/BOOTSTRAP_GUIDE.md",
+  "docs/PRESETS.md",
+  "docs/STATE_FRESHNESS.md"
 ];
 
 for (const file of requiredFiles) requireFile(file);
@@ -92,6 +98,7 @@ if (!frontmatter) {
 }
 
 const mirroredTemplates = [
+  ["templates/BOOTSTRAP.md", "skill/project-handoff/references/BOOTSTRAP_PROMPT.md"],
   ["templates/TASK.md", "skill/project-handoff/references/TASK_TEMPLATE.md"],
   ["templates/EXECUTION_RECEIPT.md", "skill/project-handoff/references/EXECUTION_RECEIPT_TEMPLATE.md"],
   ["templates/REVIEW_RESULT.md", "skill/project-handoff/references/REVIEW_RESULT_TEMPLATE.md"],
@@ -107,13 +114,17 @@ for (const [templatePath, referencePath] of mirroredTemplates) {
 }
 
 const readme = readRequired("README.md");
-for (const phrase of ["npm run validate", "GitHub", "Release Checklist"]) {
+for (const phrase of ["npm run validate", "check:staleness", "GitHub", "Release Checklist"]) {
   if (!readme.includes(phrase)) warnings.push(`README.md does not mention: ${phrase}`);
 }
 
 const installScript = readRequired("install/install-windows.ps1");
 for (const phrase of ["InstallTemplates", "ProjectRoot", "ForceTemplates"]) {
   if (!installScript.includes(phrase)) errors.push(`install-windows.ps1 missing ${phrase} support.`);
+}
+
+if (!installScript.includes("BOOTSTRAP.md")) {
+  errors.push("install-windows.ps1 must install BOOTSTRAP.md with project templates.");
 }
 
 if (errors.length > 0) {

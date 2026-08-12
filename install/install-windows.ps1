@@ -37,6 +37,7 @@ function Copy-ProjectTemplates {
 
     $templateFiles = @(
         "AGENTS.md",
+        "BOOTSTRAP.md",
         "BRIEF.md",
         "STATE.md",
         "DECISIONS.md",

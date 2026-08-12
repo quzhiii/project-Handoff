@@ -33,6 +33,8 @@ Then inspect the actual repository/files relevant to the task.
 
 Do not require every file to exist. Missing optional files are not a reason to invent content.
 
+For small projects, the Lite preset is enough: `AGENTS.md`, `BRIEF.md`, `STATE.md`, and `TASK.md`. Use the Full preset when durable decisions, roadmap separation, review artifacts, or snapshots are useful.
+
 ## 3. Use the authority map
 
 Treat each source as authoritative only for its own question:
@@ -55,12 +57,16 @@ Before editing or implementing, state briefly:
 - current task;
 - allowed scope;
 - acceptance criteria;
+- git branch, HEAD, and working tree state when available;
+- whether `STATE.md` Branch / Commit matches current git branch / HEAD;
 - any detected conflicts or stale state.
 
 If project documents disagree with repository reality, identify the mismatch explicitly.
 Preserve implementation facts. Do not silently rewrite project intent to fit the code.
 
 If a conflict would materially change scope, architecture, or product intent, stop that change and surface the decision point.
+
+If `STATE.md` is stale because its Branch or Commit does not match git, do not treat stale status as current implementation truth. Use git, tests, and real files for implementation facts, then update `STATE.md` after accepted work.
 
 ## 5. Execute only the current task
 
@@ -69,7 +75,7 @@ During EXECUTE mode:
 - Work only within `TASK.md` and the minimum adjacent changes required to satisfy it.
 - Do not expand scope because `ROADMAP.md` contains related work.
 - Do not perform unrelated cleanup or redesign.
-- Record newly discovered issues for later instead of silently absorbing them.
+- Record newly discovered issues for later and keep the current task narrow.
 - Prefer targeted context retrieval over rereading the entire project when the current task is narrow.
 
 For code work:
@@ -104,6 +110,8 @@ After meaningful execution:
 - an implementation was accepted;
 - a blocker appeared or was removed;
 - the next action changed.
+
+When updating `STATE.md`, include the current branch, commit, working tree state, and verification date when available.
 
 ### Update `DECISIONS.md` only when:
 - architecture changed;
@@ -156,7 +164,7 @@ Use a full snapshot only when useful:
 - suspected context drift;
 - archival/reproducibility checkpoint.
 
-For ordinary iterations, exchange `TASK` and `EXECUTION RECEIPT` instead of rebuilding a full context package.
+For ordinary iterations, exchange `TASK` and `EXECUTION RECEIPT` and reserve full snapshots for major transitions.
 
 ## 11. Handoff objective
 
@@ -170,3 +178,7 @@ A successful handoff means a new agent can answer, from project artifacts rather
 - What must be verified next?
 
 If the answer depends on an old conversation that is unavailable to the next agent, the durable project context is incomplete.
+
+## 12. Tools without automatic Skill loading
+
+When the current tool does not automatically discover or load this Skill, use `references/BOOTSTRAP_PROMPT.md` or a project-level `BOOTSTRAP.md` as a short manual entrypoint. Keep that prompt thin and point back to the repository files.

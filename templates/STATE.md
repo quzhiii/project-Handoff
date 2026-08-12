@@ -29,6 +29,8 @@ See `TASK.md`.
 - Repository:
 - Branch:
 - Commit:
+- Working tree:
+- Last verified:
 - PR / artifact:
 
 ## Next action

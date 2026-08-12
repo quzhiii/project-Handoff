@@ -5,6 +5,7 @@
   "description": "Cross-agent project handoff protocol skill.",
   "type": "module",
   "scripts": {
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "check:staleness": "node scripts/check-staleness.mjs"
   }
 }

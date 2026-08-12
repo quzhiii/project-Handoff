@@ -23,7 +23,8 @@ Before meaningful execution:
 2. Read `BRIEF.md`, `STATE.md`, `DECISIONS.md`, and `TASK.md` when present.
 3. Inspect the actual relevant repository/files.
 4. Check git branch / HEAD / working tree when applicable.
-5. Briefly restate current goal, state, task, scope, and acceptance criteria.
+5. Compare `STATE.md` Branch / Commit with current git branch / HEAD and report stale state.
+6. Briefly restate current goal, state, task, scope, and acceptance criteria.
 
 ## Scope rule
 
@@ -51,6 +52,12 @@ Run relevant tests/build/lint/type checks where applicable.
 Update `STATE.md` after meaningful accepted progress.
 
 Update `DECISIONS.md` only for durable product, architecture, contract, or scope decisions.
+
+## Preset rule
+
+Small projects may use the Lite preset: `AGENTS.md`, `BRIEF.md`, `STATE.md`, and `TASK.md`.
+
+Use the Full preset when durable decisions, roadmap separation, review artifacts, or snapshots are needed.
 
 ## Return rule
 

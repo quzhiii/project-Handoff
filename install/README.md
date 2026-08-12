@@ -34,4 +34,6 @@ It does not:
 
 Template bootstrap only copies Markdown files into the `-ProjectRoot` directory. It does not initialize git, stage, commit, push, or modify tool settings.
 
+The template set includes `BOOTSTRAP.md` for tools that do not automatically load Skills.
+
 Review the script before running it.

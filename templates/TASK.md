@@ -21,6 +21,13 @@ Why this task exists now.
 - DECISIONS.md
 - relevant files/specs only
 
+## Freshness Check
+
+- Current branch:
+- Current HEAD:
+- STATE.md branch / commit matches git: Yes / No
+- Working tree:
+
 ## Scope
 
 ### Allowed

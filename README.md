@@ -56,6 +56,7 @@ EXECUTION RECEIPT
 | `STATE.md` | 当前里程碑、进度、阻塞项和下一步 |
 | `DECISIONS.md` | 长期有效的产品、架构、接口和范围决策 |
 | `TASK.md` | 当前这一轮执行任务、范围和验收标准 |
+| `BOOTSTRAP.md` | 工具未自动加载 Skill 时使用的短引导口令 |
 | `ROADMAP.md` | 未来计划和待排期事项 |
 | `EXECUTION_RECEIPT.md` | 本地执行后的结果回执 |
 | `REVIEW_RESULT.md` | 验收或审查结果 |
@@ -72,6 +73,29 @@ project-handoff-v0.1-draft/
   docs/                         # Maintenance notes
   scripts/                      # Local validation
 ```
+
+### 使用预设
+
+Lite preset 适合小项目、原型和个人项目：
+
+1. `AGENTS.md`
+2. `BRIEF.md`
+3. `STATE.md`
+4. `TASK.md`
+
+Full preset 适合多 Agent 协作、频繁交接和需要审查记录的项目：
+
+1. `AGENTS.md`
+2. `BRIEF.md`
+3. `STATE.md`
+4. `DECISIONS.md`
+5. `TASK.md`
+6. `ROADMAP.md`
+7. `EXECUTION_RECEIPT.md`
+8. `REVIEW_RESULT.md`
+9. `SNAPSHOT_MANIFEST.md`
+
+更多说明见 `docs/PRESETS.md`。
 
 ### 安装 Skill
 
@@ -101,12 +125,20 @@ Windows PowerShell:
 .\install\install-windows.ps1 -InstallTemplates -ProjectRoot "E:\path\to\project" -ForceTemplates
 ```
 
+如果当前工具不会自动加载 Skill，把 `templates/BOOTSTRAP.md` 中的短引导口令粘贴到新会话开头。详细说明见 `docs/BOOTSTRAP_GUIDE.md`。
+
 ### 本地校验
 
 本地试跑、同步 GitHub 或发布前运行：
 
 ```powershell
 npm run validate
+```
+
+检查目标项目的 `STATE.md` 是否和 git 分支/HEAD 对齐：
+
+```powershell
+npm run check:staleness -- "E:\path\to\target-project"
 ```
 
 校验内容包括：
@@ -119,7 +151,7 @@ npm run validate
 
 ### 推荐工作流
 
-1. 在目标项目根目录放入 `AGENTS.md`、`BRIEF.md`、`STATE.md`、`DECISIONS.md`、`TASK.md` 和 `ROADMAP.md`。
+1. 根据项目规模选择 Lite preset 或 Full preset。
 2. 用 `BRIEF.md` 写清项目目标、目标用户、范围边界和成功标准。
 3. 用 `STATE.md` 记录当前里程碑、分支、提交、阻塞项和下一步。
 4. 用 `TASK.md` 定义一轮明确的执行任务和验收标准。
@@ -185,6 +217,7 @@ EXECUTION RECEIPT
 | `STATE.md` | Current milestone, progress, blockers, and next action |
 | `DECISIONS.md` | Durable product, architecture, interface, and scope decisions |
 | `TASK.md` | Current execution task, allowed scope, and acceptance criteria |
+| `BOOTSTRAP.md` | Short manual entry prompt when a tool does not auto-load the Skill |
 | `ROADMAP.md` | Future work and parked ideas |
 | `EXECUTION_RECEIPT.md` | Result receipt from an execution round |
 | `REVIEW_RESULT.md` | Review or acceptance result |
@@ -201,6 +234,29 @@ project-handoff-v0.1-draft/
   docs/                         # Maintenance notes
   scripts/                      # Local validation
 ```
+
+### Presets
+
+Lite preset is suitable for small projects, prototypes, and solo work:
+
+1. `AGENTS.md`
+2. `BRIEF.md`
+3. `STATE.md`
+4. `TASK.md`
+
+Full preset is suitable for multi-agent collaboration, frequent handoffs, and review trails:
+
+1. `AGENTS.md`
+2. `BRIEF.md`
+3. `STATE.md`
+4. `DECISIONS.md`
+5. `TASK.md`
+6. `ROADMAP.md`
+7. `EXECUTION_RECEIPT.md`
+8. `REVIEW_RESULT.md`
+9. `SNAPSHOT_MANIFEST.md`
+
+See `docs/PRESETS.md` for details.
 
 ### Install The Skill
 
@@ -230,12 +286,20 @@ Existing files are skipped by default. Use this when replacement is intentional:
 .\install\install-windows.ps1 -InstallTemplates -ProjectRoot "E:\path\to\project" -ForceTemplates
 ```
 
+When a tool does not auto-load Skills, paste the short prompt from `templates/BOOTSTRAP.md` at the start of a new session. See `docs/BOOTSTRAP_GUIDE.md`.
+
 ### Validate Locally
 
 Run before local rollout, GitHub sync, or release:
 
 ```powershell
 npm run validate
+```
+
+Check whether a target project's `STATE.md` matches git branch and `HEAD`:
+
+```powershell
+npm run check:staleness -- "E:\path\to\target-project"
 ```
 
 The validator checks:
@@ -248,7 +312,7 @@ The validator checks:
 
 ### Recommended Workflow
 
-1. Add `AGENTS.md`, `BRIEF.md`, `STATE.md`, `DECISIONS.md`, `TASK.md`, and `ROADMAP.md` to the target project root.
+1. Choose the Lite preset or Full preset based on project size.
 2. Describe project intent, target user, boundaries, and success criteria in `BRIEF.md`.
 3. Track current milestone, branch, commit, blockers, and next action in `STATE.md`.
 4. Define one execution round in `TASK.md` with clear acceptance criteria.
